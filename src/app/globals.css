@@ -119,9 +119,8 @@
   }
   body {
     @apply bg-background text-foreground;
-    font-family: "Poppins", sans-serif;
-    font-weight: 300;
-    font-style: normal;
+      font-family: var(--font-poppins);
+
   }
 }
 
