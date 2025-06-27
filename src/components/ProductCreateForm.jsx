@@ -5,10 +5,7 @@ import RichTextEditor from './RichTextEditor'
 import GlobalToast from '@/components/GlobalToast'
 import { FaCheckCircle, FaExclamationCircle } from 'react-icons/fa'
 
-
-const ReactQuill = dynamic(() => import('react-quill'), { ssr: false })
-import 'react-quill/dist/quill.snow.css'
-
+ 
 export default function ProductCreateForm() {
   const [toast, setToast] = useState(null)
 
