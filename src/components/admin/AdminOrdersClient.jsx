@@ -2,7 +2,7 @@
 
 // import { useState } from 'react'
 // import { FaEye, FaTimes } from 'react-icons/fa'
- 
+
 // export default function AdminOrdersClient({ orders }) {
 //   const [localOrders, setLocalOrders] = useState(orders)
 //   const [selectedOrder, setSelectedOrder] = useState(null)
@@ -35,7 +35,7 @@
 
 //   return (
 //     <div className="p- max-w-7xl mx-auto space-y-4">
- 
+
 //       <div className="overflow-x-auto border rounded">
 //         <table className="w-full text-sm">
 //           <thead className="bg-gray-100 text-left">
@@ -133,42 +133,41 @@
 //   )
 // }
 
+"use client";
 
-'use client'
-
-import { useState } from 'react'
-import { FaEye, FaTimes } from 'react-icons/fa'
+import { useState } from "react";
+import { FaEye, FaTimes } from "react-icons/fa";
 
 export default function AdminOrdersClient({ orders }) {
-  const [localOrders, setLocalOrders] = useState(orders)
-  const [selectedOrder, setSelectedOrder] = useState(null)
+  const [localOrders, setLocalOrders] = useState(orders);
+  const [selectedOrder, setSelectedOrder] = useState(null);
 
   const updateStatus = async (id, newStatus) => {
     try {
       const res = await fetch(`/api/admin/orders/${id}`, {
-        method: 'PATCH',
-        headers: { 'Content-Type': 'application/json' },
+        method: "PATCH",
+        headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ status: newStatus }),
-      })
+      });
 
-      if (!res.ok) throw new Error('Failed to update')
+      if (!res.ok) throw new Error("Failed to update");
 
-      const updated = await res.json()
+      const updated = await res.json();
       setLocalOrders((prev) =>
         prev.map((o) => (o._id === id ? { ...o, status: updated.status } : o))
-      )
+      );
     } catch (err) {
-      console.error(err)
-      alert('Failed to update status')
+      console.error(err);
+      alert("Failed to update status");
     }
-  }
+  };
 
   const statusColor = {
-    pending: 'bg-yellow-100 text-yellow-800',
-    paid: 'bg-blue-100 text-blue-800',
-    shipped: 'bg-purple-100 text-purple-800',
-    delivered: 'bg-green-100 text-green-800',
-  }
+    pending: "bg-yellow-100 text-yellow-800",
+    paid: "bg-blue-100 text-blue-800",
+    shipped: "bg-purple-100 text-purple-800",
+    delivered: "bg-green-100 text-green-800",
+  };
 
   return (
     <div className="max-w-7xl mx-auto space-y-4">
@@ -230,9 +229,11 @@ export default function AdminOrdersClient({ orders }) {
               <strong>Email:</strong> {selectedOrder.userEmail}
             </p>
             <p className="text-sm text-gray-700 mb-4">
-              <strong>Status:</strong>{' '}
+              <strong>Status:</strong>{" "}
               <span
-                className={`px-2 py-1 rounded text-xs font-medium ${statusColor[selectedOrder.status]}`}
+                className={`px-2 py-1 rounded text-xs font-medium ${
+                  statusColor[selectedOrder.status]
+                }`}
               >
                 {selectedOrder.status}
               </span>
@@ -241,8 +242,10 @@ export default function AdminOrdersClient({ orders }) {
             <div className="mb-3">
               <h4 className="font-semibold text-sm mb-1">Shipping Address</h4>
               <p className="text-sm text-gray-600">
-                {selectedOrder.address?.name}, {selectedOrder.address?.line1},<br />
-                {selectedOrder.address?.city} - {selectedOrder.address?.pincode}<br />
+                {selectedOrder.address?.name}, {selectedOrder.address?.line1},
+                <br />
+                {selectedOrder.address?.city} - {selectedOrder.address?.pincode}
+                <br />
                 Phone: {selectedOrder.address?.phone}
               </p>
             </div>
@@ -251,12 +254,12 @@ export default function AdminOrdersClient({ orders }) {
               <h4 className="font-semibold text-sm mb-1">Items</h4>
               <ul className="text-sm list-disc ml-5 space-y-1 text-gray-700">
                 {selectedOrder.items.map((item, i) => {
-                  const qty = item.qty ?? 1
+                  const qty = item.qty ?? 1;
                   return (
                     <li key={i}>
                       {item.name} × {qty} — ₹{qty * item.price}
                     </li>
-                  )
+                  );
                 })}
               </ul>
             </div>
@@ -268,5 +271,5 @@ export default function AdminOrdersClient({ orders }) {
         </div>
       )}
     </div>
-  )
+  );
 }

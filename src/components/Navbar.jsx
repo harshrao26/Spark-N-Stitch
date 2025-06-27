@@ -29,16 +29,25 @@ export default function Navbar() {
 
         {/* Desktop Nav */}
         <nav className="hidden md:flex gap-6 font-medium text-gray-700 items-center">
-          <Link href="/" className="hover:text-black transition">Home</Link>
-          <Link href="/shop" className="hover:text-black transition">Shop</Link>
-          <Link href="/orders" className="hover:text-black transition">Orders</Link>
+          <Link href="/" className="hover:text-black transition">
+            Home
+          </Link>
+          <Link href="/shop" className="hover:text-black transition">
+            Shop
+          </Link>
+          <Link href="/orders" className="hover:text-black transition">
+            Orders
+          </Link>
         </nav>
 
         {/* Icons */}
         <div className="flex gap-4 items-center md:gap-5">
-          <Link href="/partner" className="flex items-center gap-1 text-sm">
-            <FaHandshake /> <span className="hidden sm:inline">Partner</span>
+          <Link href="/partner" className="text-sm">
+            <span className="flex items-center gap-1">
+              <FaHandshake /> <span className="hidden sm:inline">Partner</span>
+            </span>
           </Link>
+
           <Link href="/cart" className="relative">
             <FiShoppingCart size={22} />
             {items.length > 0 && (
@@ -59,7 +68,10 @@ export default function Navbar() {
           )}
 
           {/* Mobile Menu Button */}
-          <button onClick={() => setMobileOpen(!mobileOpen)} className="md:hidden">
+          <button
+            onClick={() => setMobileOpen(!mobileOpen)}
+            className="md:hidden"
+          >
             <FiMenu size={22} />
           </button>
         </div>
@@ -68,16 +80,32 @@ export default function Navbar() {
       {/* Mobile Menu */}
       {mobileOpen && (
         <nav className="md:hidden px-4 py-4 space-y-3 bg-white border-t border-gray-200 text-sm">
-          <Link href="/shop" className="block" onClick={() => setMobileOpen(false)}>
+          <Link
+            href="/shop"
+            className="block"
+            onClick={() => setMobileOpen(false)}
+          >
             Shop
           </Link>
-          <Link href="/orders" className="block" onClick={() => setMobileOpen(false)}>
+          <Link
+            href="/orders"
+            className="block"
+            onClick={() => setMobileOpen(false)}
+          >
             Orders
           </Link>
-          <Link href="/cart" className="block" onClick={() => setMobileOpen(false)}>
+          <Link
+            href="/cart"
+            className="block"
+            onClick={() => setMobileOpen(false)}
+          >
             Cart
           </Link>
-          <Link href="/dashboard" className="block" onClick={() => setMobileOpen(false)}>
+          <Link
+            href="/dashboard"
+            className="block"
+            onClick={() => setMobileOpen(false)}
+          >
             Profile
           </Link>
 
