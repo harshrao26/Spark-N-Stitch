@@ -1,17 +1,35 @@
-import { getServerSession } from 'next-auth'
-import { authOptions } from '@/lib/authOptions'
-import { connectDB } from '@/lib/mongoose'
-import Order from '@/models/Order'
+import { getServerSession } from "next-auth";
+import { authOptions } from "@/lib/authOptions";
+import { connectDB } from "@/lib/mongoose";
+import Order from "@/models/Order";
+import Link from "next/link";
 
 export default async function DashboardPage() {
-  const session = await getServerSession(authOptions)
-  if (!session) return <div className="p-6">Please login to view your orders.</div>
+  const session = await getServerSession(authOptions);
+  if (!session) return (
+  <div className="p-6 max-w-md mx-auto text-center space-y-4">
+    <p className="text-lg font-medium">Please login to view your orders.</p>
+    <Link
+      href="/login"
+      className="inline-block px-5 py-2 rounded bg-pink-500 text-white font-semibold hover:bg-pink-700 transition"
+    >
+      Login
+    </Link>
+  </div>
+)
 
-  await connectDB()
-  const orders = await Order.find({ userEmail: session.user.email }).sort({ createdAt: -1 }).lean()
 
-  const current = orders.filter(o => o.status === 'pending' || o.status === 'paid')
-  const past = orders.filter(o => o.status === 'shipped' || o.status === 'delivered')
+  await connectDB();
+  const orders = await Order.find({ userEmail: session.user.email })
+    .sort({ createdAt: -1 })
+    .lean();
+
+  const current = orders.filter(
+    (o) => o.status === "pending" || o.status === "paid"
+  );
+  const past = orders.filter(
+    (o) => o.status === "shipped" || o.status === "delivered"
+  );
 
   return (
     <div className="p-6 max-w-4xl mx-auto space-y-6">
@@ -23,9 +41,7 @@ export default async function DashboardPage() {
         {current.length === 0 ? (
           <p className="text-sm text-gray-500">No current orders.</p>
         ) : (
-          current.map((order) => (
-            <OrderCard key={order._id} order={order} />
-          ))
+          current.map((order) => <OrderCard key={order._id} order={order} />)
         )}
       </div>
 
@@ -35,13 +51,11 @@ export default async function DashboardPage() {
         {past.length === 0 ? (
           <p className="text-sm text-gray-500">No past orders.</p>
         ) : (
-          past.map((order) => (
-            <OrderCard key={order._id} order={order} />
-          ))
+          past.map((order) => <OrderCard key={order._id} order={order} />)
         )}
       </div>
     </div>
-  )
+  );
 }
 
 function OrderCard({ order }) {
@@ -49,13 +63,13 @@ function OrderCard({ order }) {
     <div className="border p-4 rounded-xl mb-6 shadow-sm bg-white space-y-3">
       <div className="flex justify-between items-center text-sm text-gray-600">
         <span className="font-medium">
-          Order ID:{' '}
+          Order ID:{" "}
           <span className="text-gray-800">
             {order._id?.toString().slice(-6).toUpperCase()}
           </span>
         </span>
         <span>
-          Status:{' '}
+          Status:{" "}
           <span className="capitalize font-semibold text-pink-600">
             {order.status}
           </span>
@@ -67,7 +81,7 @@ function OrderCard({ order }) {
         {order.items.map((item, i) => (
           <li key={i} className="flex gap-4 py-3 items-center">
             <img
-              src={item.image || item.images?.[0] || '/placeholder.jpg'}
+              src={item.image || item.images?.[0] || "/placeholder.jpg"}
               alt={item.name}
               className="w-16 h-16 object-cover rounded border"
             />
@@ -77,7 +91,6 @@ function OrderCard({ order }) {
                 Qty: {item.quantity} × ₹{item.price}
               </p>
             </div>
-            
           </li>
         ))}
       </ul>
@@ -86,5 +99,5 @@ function OrderCard({ order }) {
         Total: ₹{order.total}
       </div>
     </div>
-  )
+  );
 }
