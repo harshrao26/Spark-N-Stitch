@@ -11,8 +11,10 @@ import Link from 'next/link'
 export default async function AdminPage() {
   const session = await getServerSession(authOptions)
   if (!session || session.user.role !== 'admin') {
-    return <div className="p-8 text-red-600">Access denied</div>
+    return <div className="p-8 h-screen flex items-center justify-center text-7xl text-white bg-red-600">Access Denied</div>
   }
+  console.log('SESSION IN ADMIN PAGE:', session)
+
 
   await connectDB()
   const orders = await Order.find().sort({ createdAt: -1 }).lean()
