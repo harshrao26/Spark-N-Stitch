@@ -3,7 +3,7 @@ import { authOptions } from '@/lib/authOptions'
 import { connectDB } from '@/lib/mongoose'
 import Order from '@/models/Order'
 
-import AdminOrdersClient from './orders/AdminOrdersClient'
+import AdminOrdersClient from '@/components/admin/AdminOrdersClient'
 import ProductCreateForm from '@/components/ProductCreateForm'
 import Link from 'next/link'
 
