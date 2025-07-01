@@ -1,32 +1,65 @@
 "use client"
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import { load } from "@cashfreepayments/cashfree-js";
 
 const PartnerPage = () => {
   const [showPopup, setShowPopup] = useState(false);
+  const [cashfree, setCashfree] = useState(null);
+  const [orderId, setOrderId] = useState("");
 
-  const handlePayment = () => {
-    const options = {
-      key: "rzp_test_bLJCkbDJ1qiQui", // replace with real Razorpay key
-      amount: 19900,
-      currency: "INR",
-      name: "Spark Partner Program",
-      description: "Affiliate Entry Fee",
-      handler: function (response) {
-        // ✅ Show WhatsApp popup
-        setShowPopup(true);
-      },
-      prefill: {
-        name: "New Partner",
-        email: "partner@example.com",
-        contact: "9999999999",
-      },
-      theme: {
-        color: "#e74694",
-      },
-    };
+  useEffect(() => {
+    (async () => {
+      const cf = await load({ mode: "sandbox" });
+      setCashfree(cf);
+    })();
+  }, []);
 
-    const rzp = new window.Razorpay(options);
-    rzp.open();
+  const getSessionId = async () => {
+  const res = await fetch("/api/cashfree/session", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({
+      total: 199,
+      email: "partner@example.com", // ✅ Replace with actual email input later
+      address: {
+        name: "Spark Partner",      // ✅ Replace with input if needed
+        phone: "9999999999",        // ✅ Replace with input if needed
+      },
+      items: [],
+    }),
+  });
+
+  const data = await res.json();
+  setOrderId(data.order_id);
+  return data.payment_session_id;
+};
+
+  const verifyPayment = async () => {
+    const res = await fetch("/api/cashfree/verify", {
+      method: "POST",
+      body: JSON.stringify({ orderId }),
+      headers: { "Content-Type": "application/json" },
+    });
+    const data = await res.json();
+
+    // ✅ You can add more checks here like payment status === "SUCCESS"
+    if (data && data.length > 0) {
+      setShowPopup(true);
+    }
+  };
+
+  const handlePayment = async () => {
+    const sessionId = await getSessionId();
+
+    await cashfree.checkout({
+      paymentSessionId: sessionId,
+      redirectTarget: "_modal",
+    });
+
+    // Optionally: wait and verify after a delay
+    setTimeout(() => {
+      verifyPayment();
+    }, 4000);
   };
 
   return (
@@ -36,20 +69,17 @@ const PartnerPage = () => {
           Become a Spark Partner
         </h1>
         <p className="text-gray-600 text-lg mb-8">
-          Join our affiliate program and be a part of India’s coworking revolution. Earn, grow, and get exclusive access to resources.
+          Join our affiliate program and be a part of India’s coworking revolution.
         </p>
 
         <div className="bg-pink-50 border border-[#e74694] rounded-lg p-6 mb-10 text-left shadow">
-          <h2 className="text-xl font-semibold mb-2">Why Join?</h2>
           <ul className="list-disc list-inside space-y-1 text-gray-700">
-            <li>Earn up to 20% commission on referrals</li>
-            <li>Exclusive partner dashboard</li>
-            <li>Early access to launches</li>
+            <li>Earn up to 20% commission</li>
+            <li>Access dashboard, resources & early launches</li>
             <li>Private WhatsApp support group</li>
           </ul>
-
           <div className="mt-6 text-pink-700 font-medium">
-            💰 One-time Entry Fee: ₹199 (includes partner kit & access)
+            💰 One-time Entry Fee: ₹199
           </div>
         </div>
 
@@ -69,7 +99,7 @@ const PartnerPage = () => {
               🎉 Payment Successful!
             </h3>
             <p className="text-gray-600 mb-6">
-              Click below to join our private partner WhatsApp group.
+              Click below to join our private WhatsApp group.
             </p>
             <a
               href="https://chat.whatsapp.com/EGXJWqqAp7s3ODEVLNMYzB"

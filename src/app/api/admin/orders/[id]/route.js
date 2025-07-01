@@ -1,26 +1,29 @@
-import { getServerSession } from 'next-auth'
-import { authOptions } from '@/lib/authOptions'
 import { connectDB } from '@/lib/mongoose'
 import Order from '@/models/Order'
+import { NextResponse } from 'next/server'
+import mongoose from 'mongoose'
 
+// PATCH: Update order status
 export async function PATCH(req, { params }) {
-  const session = await getServerSession(authOptions)
-  if (!session || session.user.role !== 'admin') {
-    return Response.json({ error: 'Unauthorized' }, { status: 401 })
+  const { id } = params
+
+  if (!mongoose.Types.ObjectId.isValid(id)) {
+    return NextResponse.json({ error: 'Invalid Order ID' }, { status: 400 })
   }
 
-  await connectDB()
-  const { status } = await req.json()
+  try {
+    const { status } = await req.json()
+    await connectDB()
 
-  const order = await Order.findByIdAndUpdate(
-    params.id,
-    { status },
-    { new: true }
-  ).lean()
+    const updated = await Order.findByIdAndUpdate(id, { status }, { new: true })
 
-  if (!order) {
-    return Response.json({ error: 'Order not found' }, { status: 404 })
+    if (!updated) {
+      return NextResponse.json({ error: 'Order not found' }, { status: 404 })
+    }
+
+    return NextResponse.json({ success: true, updated })
+  } catch (err) {
+    console.error('Status update failed:', err.message)
+    return NextResponse.json({ error: 'Server error' }, { status: 500 })
   }
-
-  return Response.json({ status: order.status })
 }

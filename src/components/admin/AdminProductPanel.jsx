@@ -29,8 +29,7 @@ export default function AdminProductPanel({ products }) {
           <div className="flex gap-3 text-gray-600 text-sm">
             <Link href={`/product/${p._id}`} className="hover:text-blue-600"><FaEye /></Link>
             <Link href={`/admin/products/edit/${p._id}`} className="hover:text-yellow-600"><FaEdit /></Link>
-            {/* Optional: Add Delete */}
-          </div>
+           </div>
         </div>
       ))}
     </div>

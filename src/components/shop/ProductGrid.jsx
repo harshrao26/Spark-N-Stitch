@@ -5,17 +5,17 @@ import AddToCart from '../AddToCart'
 
 export default function ProductGrid({ products }) {
   return (
-    <div className="grid grid-cols-2 sm:grid-cols-3 xl:grid-cols-4 gap-4">
+    <div className="grid grid-cols-2 sm:grid-cols-3 xl:grid-cols-3 gap-4">
       {products.map((p) => (
         <div
           key={p._id}
-          className="bg-white rounded-xl border overflow-hidden shadow-sm hover:shadow-md transition text-sm"
+          className="bg-white  rounded-xl border overflow-hidden shadow-sm hover:shadow-md transition text-sm"
         >
           {/* Product Image */}
           <img
             src={p.images?.[0] || '/placeholder.jpg'}
             alt={p.name}
-            className="w-full h-36 sm:h-44 xl:h-60 object-contain bg-gray-50"
+            className="w-full h-36 sm:h-44 xl:h-60 object-contain  "
           />
 
           {/* Product Info */}

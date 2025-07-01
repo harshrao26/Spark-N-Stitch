@@ -1,39 +1,67 @@
 'use client'
-import React, { useState } from 'react'
-import Script from 'next/script'
+import React, { useState, useEffect } from 'react'
+import { load } from '@cashfreepayments/cashfree-js'
 
 const AffiliateSection = () => {
   const [showPopup, setShowPopup] = useState(false)
+  const [cashfree, setCashfree] = useState(null)
+  const [orderId, setOrderId] = useState('')
 
-  const handleAffiliatePayment = () => {
-    const options = {
-      key: 'rzp_test_bLJCkbDJ1qiQui', // ✅ Replace with your live Razorpay key in production
-      amount: 19900, // ₹199 in paise
-      currency: 'INR',
-      name: 'Affiliate Program',
-      description: 'Join as Affiliate Partner',
-      handler: function (response) {
-        setShowPopup(true)
-      },
-      prefill: {
-        name: 'Affiliate User',
+  useEffect(() => {
+    (async () => {
+      const cf = await load({ mode: 'sandbox' }) // use 'production' in live
+      setCashfree(cf)
+    })()
+  }, [])
+
+  const getSessionId = async () => {
+    const res = await fetch('/api/cashfree/session', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        total: 199,
         email: 'user@example.com',
-        contact: '9999999999',
-      },
-      theme: {
-        color: '#111827',
-      },
-    }
+        address: {
+          name: 'Affiliate User',
+          phone: '9999999999',
+        },
+        items: [],
+      }),
+    })
 
-    const rzp = new window.Razorpay(options)
-    rzp.open()
+    const data = await res.json()
+    setOrderId(data.order_id)
+    return data.payment_session_id
+  }
+
+  const verifyPayment = async () => {
+    const res = await fetch('/api/cashfree/verify', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ orderId }),
+    })
+
+    const data = await res.json()
+    if (data && data.length > 0) {
+      setShowPopup(true)
+    }
+  }
+
+  const handleAffiliatePayment = async () => {
+    const sessionId = await getSessionId()
+
+    await cashfree.checkout({
+      paymentSessionId: sessionId,
+      redirectTarget: '_modal',
+    })
+
+    setTimeout(() => {
+      verifyPayment()
+    }, 4000)
   }
 
   return (
     <section className="bg-white py-20 px-6 md:px-12 relative">
-      {/* Razorpay Script */}
-      <Script src="https://checkout.razorpay.com/v1/checkout.js" />
-
       <div className="max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between gap-10">
         {/* Left Content */}
         <div className="md:w-1/2 text-center md:text-left">

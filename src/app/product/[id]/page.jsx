@@ -63,12 +63,11 @@ export default async function ProductPage({ params }) {
           dangerouslySetInnerHTML={{ __html: product.description }}
         />
 
-       {product.stock > 0 && (
-  <div className="fixed bottom-0 left-0 w-full md:static md:w-auto bg-pink-500 p-4 flex justify-center z-50">
-    <AddToCart product={product} />
-  </div>
-)}
-
+        {product.stock > 0 && (
+          <div className="fixed bottom-0 left-0 w-full md:static md:w-auto bg-pink-500 p-2 flex justify-center z-50">
+            <AddToCart product={product} />
+          </div>
+        )}
       </div>
     </div>
   );

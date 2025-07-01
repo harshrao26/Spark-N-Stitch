@@ -1,38 +1,24 @@
-'use client'
+"use client";
 
-import { Poppins } from "next/font/google"
+// import { Poppins } from 'next /font/google';
 import "./globals.css";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
-import { SessionProvider } from 'next-auth/react'
+import { SessionProvider } from "next-auth/react";
 
- 
-
-const poppins = Poppins({
-  subsets: ["latin"],
-  weight: ["300", "400", "500", "600", "700"],
-  variable: "--font-poppins",
-  display: "swap",
-})
-
-
- 
+// const poppins = Poppins({ subsets: ['latin'], weight: ['400', '600'] });
 
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-
       <body
-        className={`${poppins.variable} antialiased`}
+      // className={`${poppins.variable} antialiased`}
       >
+        <SessionProvider>
+          <Navbar />
 
-       <SessionProvider>
-                      <Navbar />
-
-
-        {children}
-        <Footer/>
-
+          {children}
+          <Footer />
         </SessionProvider>
       </body>
     </html>
