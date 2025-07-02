@@ -1,4 +1,5 @@
 'use client'
+export const dynamic = "force-dynamic"; // 👈 Add this
 
 import { FaEye, FaCartPlus } from 'react-icons/fa'
 import { useRouter } from 'next/navigation'

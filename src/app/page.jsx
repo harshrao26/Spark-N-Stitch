@@ -1,3 +1,5 @@
+export const dynamic = "force-dynamic"; // 👈 Add this
+
 import HeroCarousel from "@/components/HeroCarousel";
 import UspStrip from "@/components/UspStrip";
 import HoverCards from "@/components/HoverCards";
