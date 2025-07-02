@@ -26,7 +26,7 @@ export async function POST(req) {
 
   try {
     const res = await axios.post(
-      'https://sandbox.cashfree.com/pg/orders',
+      'https://api.cashfree.com/pg/orders',
       payload,
       {
         headers: {

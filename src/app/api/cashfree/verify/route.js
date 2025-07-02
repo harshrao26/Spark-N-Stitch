@@ -6,7 +6,7 @@ export async function POST(req) {
 
   try {
     const res = await axios.get(
-      `https://sandbox.cashfree.com/pg/orders/${orderId}/payments`,
+      `https://api.cashfree.com/pg/orders/${orderId}/payments`,
       {
         headers: {
           'x-client-id': process.env.CASHFREE_APP_ID,
