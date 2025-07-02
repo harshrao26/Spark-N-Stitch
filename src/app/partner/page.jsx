@@ -9,7 +9,7 @@ const PartnerPage = () => {
 
   useEffect(() => {
     (async () => {
-      const cf = await load({ mode: "sandbox" });
+      const cf = await load({ mode: "production" });
       setCashfree(cf);
     })();
   }, []);

@@ -25,7 +25,7 @@ export default function CheckoutPage() {
     if (items.length === 0) router.push('/cart')
 
     const init = async () => {
-      const cf = await load({ mode: 'sandbox' }) // change to 'production' later
+      const cf = await load({ mode: 'production' }) // change to 'production' later
       setCashfree(cf)
     }
 

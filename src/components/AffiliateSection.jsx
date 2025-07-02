@@ -9,7 +9,7 @@ const AffiliateSection = () => {
 
   useEffect(() => {
     (async () => {
-      const cf = await load({ mode: 'sandbox' }) // use 'production' in live
+      const cf = await load({ mode: 'production' }) // use 'production' in live
       setCashfree(cf)
     })()
   }, [])
