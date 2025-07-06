@@ -34,7 +34,7 @@ export default function ProductCard({ product }) {
       {/* Info */}
       <div className="p-3 sm:p-4 flex flex-col gap-1.5 text-sm sm:text-[13px]">
         {/* Title */}
-        <h3 className="text-sm sm:text-base font-semibold text-gray-900 line-clamp-2">
+        <h3 className="text-sm sm:text-base font- text-gray-900 line-clamp-2">
           {product.name}
         </h3>
 
@@ -45,7 +45,7 @@ export default function ProductCard({ product }) {
 
         {/* Pricing */}
         <div className="flex items-center gap-2">
-          <span className="text-base font-bold text-pink-500">
+          <span className="text-base font-  text-pink-500">
             ₹{discountedPrice}
           </span>
           <span className="text-xs line-through text-gray-400">

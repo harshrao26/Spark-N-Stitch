@@ -22,7 +22,7 @@ export default function ShopFilters({
           className="flex justify-between items-center cursor-pointer mb-3"
           onClick={() => setShowType(!showType)}
         >
-          <h4 className="font-semibold text-gray-900 tracking-wide">Type</h4>
+          <h4 className="font-semi text-gray-900 tracking-wide">Type</h4>
           {showType ? <FaChevronUp size={16} /> : <FaChevronDown size={16} />}
         </div>
         {showType && (
@@ -50,7 +50,7 @@ export default function ShopFilters({
           className="flex justify-between items-center cursor-pointer mb-3"
           onClick={() => setShowBrand(!showBrand)}
         >
-          <h4 className="font-semibold text-gray-900 tracking-wide">Brand</h4>
+          <h4 className="font-semi text-gray-900 tracking-wide">Brand</h4>
           {showBrand ? <FaChevronUp size={16} /> : <FaChevronDown size={16} />}
         </div>
         {showBrand && (
@@ -96,7 +96,7 @@ export default function ShopFilters({
       {mobileOpen && (
         <div className="fixed inset-0 z-50 bg-white p-6 overflow-y-auto md:hidden">
           <div className="flex justify-between items-center mb-6">
-            <h3 className="text-lg font-bold">Filters</h3>
+            <h3 className="text-lg font-">Filters</h3>
             <button onClick={() => setMobileOpen(false)} className="text-gray-600">
               <FaTimes size={20} />
             </button>

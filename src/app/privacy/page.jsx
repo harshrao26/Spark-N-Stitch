@@ -19,7 +19,7 @@ import banner from '@/assets/privacy-banner.png' // ✅ Place banner image in /p
 
 const Section = ({ icon: Icon, title, children }) => (
   <div className="mb-10">
-    <h2 className="flex items-center gap-3 text-xl font-semibold text-gray-800 mb-2">
+    <h2 className="flex items-center gap-3 text-xl font- text-gray-800 mb-2">
       <Icon className="text-pink-600" />
       {title}
     </h2>
@@ -39,7 +39,7 @@ const PrivacyPolicy = () => {
           className="object-cover"
         />
         <div className="absolute inset-0 bg-black/30 flex flex-col items-center justify-center text-white text-center px-4">
-          <h1 className="text-3xl md:text-4xl font-bold mb-2">Privacy Policy</h1>
+          <h1 className="text-3xl md:text-4xl font- mb-2">Privacy Policy</h1>
           <p className="text-sm md:text-base max-w-2xl">
             How Spark & Stitch collects, uses, and protects your personal data.
           </p>
@@ -53,19 +53,19 @@ const PrivacyPolicy = () => {
         </p>
 
         <Section icon={FaUserShield} title="1. Information We Collect">
-          <p className="font-semibold mb-1">a) Information You Provide:</p>
+          <p className="font- mb-1">a) Information You Provide:</p>
           <ul className="list-disc ml-6 space-y-1">
             <li>Full name, email, phone number</li>
             <li>Shipping & billing addresses</li>
             <li>Account login, order history</li>
             <li>Customer service interactions</li>
           </ul>
-          <p className="font-semibold mt-3 mb-1">b) Automatically Collected:</p>
+          <p className="font- mt-3 mb-1">b) Automatically Collected:</p>
           <ul className="list-disc ml-6 space-y-1">
             <li>IP address, device info, browser type</li>
             <li>Usage patterns and cookies</li>
           </ul>
-          <p className="font-semibold mt-3 mb-1">c) From Third Parties:</p>
+          <p className="font- mt-3 mb-1">c) From Third Parties:</p>
           <ul className="list-disc ml-6 space-y-1">
             <li>Payment processors</li>
             <li>Marketing & shipping partners</li>

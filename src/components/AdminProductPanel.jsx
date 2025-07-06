@@ -23,7 +23,7 @@ export default function AdminProductPanel({ products }) {
       {localProducts.map((p) => (
         <div key={p._id} className="border rounded-lg p-4 flex justify-between items-center shadow-sm bg-white hover:shadow-md transition">
           <div>
-            <h3 className="font-semibold text-lg">{p.name}</h3>
+            <h3 className="font- text-lg">{p.name}</h3>
             <p className="text-sm text-gray-500">{p.category} | ₹{p.price}</p>
           </div>
 

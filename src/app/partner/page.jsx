@@ -65,7 +65,7 @@ const PartnerPage = () => {
   return (
     <div className="bg-white min-h-screen py-16 px-6 md:px-12">
       <div className="max-w-4xl mx-auto text-center">
-        <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
+        <h1 className="text-4xl md:text-5xl font- text-gray-900 mb-6">
           Become a Spark Partner
         </h1>
         <p className="text-gray-600 text-lg mb-8">
@@ -85,7 +85,7 @@ const PartnerPage = () => {
 
         <button
           onClick={handlePayment}
-          className="bg-[#e74694] hover:bg-pink-600 text-white text-lg px-8 py-3 rounded-full font-semibold transition duration-300"
+          className="bg-[#e74694] hover:bg-pink-600 text-white text-lg px-8 py-3 rounded-full font-semi transition duration-300"
         >
           Pay ₹199 & Join Now
         </button>
@@ -95,7 +95,7 @@ const PartnerPage = () => {
       {showPopup && (
         <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50">
           <div className="bg-white rounded-xl p-6 shadow-lg max-w-sm w-full text-center">
-            <h3 className="text-xl font-semibold mb-4 text-gray-800">
+            <h3 className="text-xl font-semi mb-4 text-gray-800">
               🎉 Payment Successful!
             </h3>
             <p className="text-gray-600 mb-6">

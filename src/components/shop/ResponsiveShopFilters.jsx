@@ -38,7 +38,7 @@ export default function ResponsiveShopFilters({
           {/* Sidebar */}
           <div className="relative ml-auto w-4/5 max-w-xs bg-white h-full shadow-xl p-6 overflow-y-auto rounded-l-lg">
             <div className="flex justify-between items-center mb-6">
-              <h3 className="text-lg font-semibold text-gray-800">Filters</h3>
+              <h3 className="text-lg font-  text-gray-800">Filters</h3>
               <button
                 onClick={() => setOpen(false)}
                 className="text-gray-600 hover:text-black"

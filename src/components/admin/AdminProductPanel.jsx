@@ -22,7 +22,7 @@ export default function AdminProductPanel({ products }) {
 
           {/* Info + Actions */}
           <div className="flex-1">
-            <h3 className="text-lg font-semibold">{p.name}</h3>
+            <h3 className="text-lg font-">{p.name}</h3>
             <p className="text-sm text-gray-500">₹{p.price} | {p.category}</p>
           </div>
 

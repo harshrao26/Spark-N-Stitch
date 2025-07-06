@@ -11,7 +11,7 @@ export default async function ShopPage() {
       {products.map((product) => (
         <div key={product._id} className="border p-4 space-y-2 rounded shadow-sm">
           <img src={product.image} alt={product.name} className="w-full h-40 object-cover" />
-          <h3 className="text-lg font-semibold">{product.name}</h3>
+          <h3 className="text-lg font-">{product.name}</h3>
           <p className="text-gray-700">₹{product.price}</p>
           <p className="text-sm text-gray-500">Stock: {product.stock}</p>
           <AddToCartButton product={product} />

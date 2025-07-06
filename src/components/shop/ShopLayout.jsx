@@ -69,10 +69,10 @@ export default function ShopLayout({ products, types }) {
                 />
               </div>
               <div className="p-4 space-y-1">
-                 <h3 className="text-sm font-semibold text-gray-900 truncate">{p.name}</h3>
+                 <h3 className="text-sm font-semi text-gray-900 truncate">{p.name}</h3>
                 <p className="text-xs text-gray-500">{p.brand}</p>
                 <div className="flex items-center gap-2 mt-1">
-                  <span className="text-pink-600 font-bold text-sm">₹{p.price}</span>
+                  <span className="text-pink-600 font- text-sm">₹{p.price}</span>
                   <span className="text-gray-400 line-through text-xs">₹{Math.round(p.price * 1.15)}</span>
                 </div>
               </div>

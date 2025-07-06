@@ -18,6 +18,9 @@ export default async function ShopPage() {
   const types = [...new Set(safeProducts.map(p => p.type || ''))];
   const brands = [...new Set(safeProducts.map(p => p.brand || ''))];
 
+  console.log(safeProducts);
+
+
   return (
     <ShopPageClient
       products={safeProducts}

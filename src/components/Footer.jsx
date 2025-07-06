@@ -17,7 +17,7 @@ const Footer = () => {
         {/* Logo & Brand */}
         <div className="flex flex-col items-center gap-2">
           <Image src={logo} alt="Company Logo" className="h-12 w-auto" />
-          <h2 className="text-lg font-semibold">Spark & Stitch</h2>
+          <h2 className="text-lg font-">Spark & Stitch</h2>
         </div>
 
         {/* Contact Info */}

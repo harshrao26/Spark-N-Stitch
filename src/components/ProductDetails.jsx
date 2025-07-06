@@ -22,10 +22,7 @@ export default function ProductDetails({ product }) {
   };
 
   const handleAddToCart = () => {
-    if (!selectedSize || !selectedColor) {
-      alert("Please select size and color");
-      return;
-    }
+    
 
     add({
       ...product,
@@ -79,14 +76,14 @@ export default function ProductDetails({ product }) {
 
       {/* Product Details */}
       <div className="md:space-y-5 space-y-2">
-        <h1 className="text-xl md:text-3xl capitalize font-bold text-gray-900">{product.name}</h1>
+        <h1 className="text-xl md:text-3xl capitalize font- text-gray-900">{product.name}</h1>
 
         <p className="text-sm text-gray-500 capitalize">
           {product.brand} {product.type && `| ${product.type}`}
         </p>
 
         <div className="flex items-center capitalize gap-3">
-          <span className="text-pink-600 font-bold text-xl md:text-2xl">
+          <span className="text-pink-600 font- text-xl md:text-2xl">
             ₹{product.price}
           </span>
           <span className="text-sm  line-through text-gray-400">

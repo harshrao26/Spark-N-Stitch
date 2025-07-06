@@ -1,42 +1,72 @@
-'use client'
-import { useState, useMemo } from 'react'
-import ShopCarousel from './ShopCarousel'
-import ShopFilters from './ShopFilters'
-import ProductGrid from './ProductGrid'
+"use client";
+import { useState, useMemo, useEffect } from "react";
+import { useSearchParams } from "next/navigation";
+import ShopCarousel from "./ShopCarousel";
+import ShopFilters from "./ShopFilters";
+import ProductGrid from "./ProductGrid";
+import Link from "next/link";
+
 
 export default function ShopPageClient({ products, types, brands }) {
-  const [type, setType] = useState('')
-  const [brand, setBrand] = useState('')
+  const searchParams = useSearchParams();
+  const initialIdealFor = searchParams.get("idealFor") || "";
+
+  const [idealFor, setIdealFor] = useState(initialIdealFor);
+  const [brand, setBrand] = useState("");
+
+  useEffect(() => {
+    setIdealFor(initialIdealFor);
+  }, [initialIdealFor]);
 
   const filtered = useMemo(() => {
-    return products.filter(p =>
-      (!type || p.type === type) &&
-      (!brand || p.brand === brand)
-    )
-  }, [products, type, brand])
+    return products.filter(
+      (p) =>
+        (!idealFor || p.idealFor?.toLowerCase() === idealFor.toLowerCase()) &&
+        (!brand || p.brand === brand)
+    );
+  }, [products, idealFor, brand]);
 
   return (
     <div className="space-y-8 px-4 md:px-6 xl:px-0">
       {/* Top Carousel */}
       <ShopCarousel />
 
+          <div className="flex gap-4 flex-wrap justify-center md:justify-center my-6">
+      <Link
+        href="/shop?idealFor=jewellery"
+        className="px-4 py-2 rounded-full border border-gray-300 text-sm text-gray-700 hover:bg-gray-800 hover:text-white transition"
+      >
+        Jewellery
+      </Link>
+
+      <Link
+        href="/shop?idealFor=fashion"
+        className="px-4 py-2 rounded-full border border-gray-300 text-sm text-gray-700 hover:bg-gray-800 hover:text-white transition"
+      >
+        Fashion
+      </Link>
+    </div>
+
+
+        <div className=" max-w-7xl mx-auto">
+        <ProductGrid products={filtered} />
+      </div>
+
       {/* Filters + Grid */}
-      <div className="grid grid-cols-1 md:grid-cols-4 gap-4 max-w-7xl mx-auto">
-        {/* Left Filters */}
-        <ShopFilters
+      {/* <div className="grid grid-cols-1 md:grid-cols-1 gap-4 max-w-7xl mx-auto"> */}
+      {/* Left Filters */}
+      {/* <ShopFilters
           types={types}
           brands={brands}
-          selectedType={type}
+          selectedType={idealFor}
           selectedBrand={brand}
-          setType={setType}
+          setType={setIdealFor}
           setBrand={setBrand}
-        />
+        /> */}
 
-        {/* Right Product Grid */}
-        <div className="md:col-span-3">
-          <ProductGrid products={filtered} />
-        </div>
-      </div>
+      {/* Right Product Grid */}
+    
+      {/* </div> */}
     </div>
-  )
+  );
 }

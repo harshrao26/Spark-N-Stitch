@@ -45,7 +45,7 @@ const HoverCards = () => {
 
           {/* Hover Content */}
           <div className="absolute bottom-0 p-6 w-full transform translate-y-full group-hover:translate-y-0 transition-transform duration-500 text-white">
-            <h3 className="text-xl font-semibold">{item.title}</h3>
+            <h3 className="text-xl font-semi">{item.title}</h3>
             <p className="text-sm mt-2 mb-8">{item.subtitle}</p>
             <Link
               href="/shop"
@@ -55,7 +55,7 @@ const HoverCards = () => {
           </div>
 
           {/* Static title (shown before hover) */}
-          <div className="absolute bottom-6 left-6 text-white text-xl font-bold group-hover:opacity-0 transition-opacity duration-300">
+          <div className="absolute bottom-6 left-6 text-white text-xl font- group-hover:opacity-0 transition-opacity duration-300">
             {item.title}
           </div>
         </div>

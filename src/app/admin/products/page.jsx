@@ -15,7 +15,7 @@ export default async function AdminProductsPage() {
 
   return (
     <div className="p-6 max-w-6xl mx-auto">
-      <h1 className="text-2xl font-bold mb-6">Manage Products</h1>
+      <h1 className="text-2xl font- mb-6">Manage Products</h1>
       <AdminProductPanel products={JSON.parse(JSON.stringify(products))} />
     </div>
   )

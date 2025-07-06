@@ -17,7 +17,7 @@ import banner from "@/assets/terms-banner.png"; // Add a clean styled image here
 import Image from "next/image";
 const Section = ({ icon: Icon, title, children }) => (
   <div className="mb-10">
-    <h2 className="flex items-center gap-3 text-xl font-semibold text-gray-800 mb-2">
+    <h2 className="flex items-center gap-3 text-xl font- text-gray-800 mb-2">
       <Icon className="text-pink-600" />
       {title}
     </h2>
@@ -36,7 +36,7 @@ const TermsPage = () => {
           className="w-full h-full object-cover"
         />
         <div className="absolute inset-0 bg-black/30 flex flex-col items-center justify-center text-white text-center px-4">
-          <h1 className="text-3xl md:text-4xl font-bold mb-2">Terms & Conditions</h1>
+          <h1 className="text-3xl md:text-4xl font-v mb-2">Terms & Conditions</h1>
           <p className="text-sm md:text-base max-w-2xl">
             Please read carefully before using Spark n Stitch. These terms define our commitment and your rights.
           </p>
@@ -78,7 +78,7 @@ const TermsPage = () => {
           <p>
             Returns are accepted only with an unboxing video and clear photos from parcel opening. No claims accepted without this proof.
           </p>
-          <p className="mt-2 font-semibold">Non-returnable:</p>
+          <p className="mt-2 font-">Non-returnable:</p>
           <ul className="list-disc ml-6">
             <li>Customized/personalized items</li>
             <li>Discounted products</li>

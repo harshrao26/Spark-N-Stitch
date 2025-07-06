@@ -13,7 +13,7 @@ export default function CartPage() {
 
   return (
     <div className="p-4 sm:p-6 max-w-3xl mx-auto space-y-6">
-      <h2 className="text-2xl font-bold text-gray-800">🛒 Your Cart</h2>
+      <h2 className="text-2xl font- text-gray-800">🛒 Your Cart</h2>
 
       {items.length === 0 ? (
         <div className="text-center py-20 text-gray-500 text-sm">Your cart is empty.</div>
@@ -33,7 +33,7 @@ export default function CartPage() {
 
                 <div className="flex flex-col justify-between flex-1">
                   <div className="space-y-1">
-                    <h3 className="text-base font-semibold text-gray-800">{item.name}</h3>
+                    <h3 className="text-base font-semi text-gray-800">{item.name}</h3>
 
                     <p className="text-sm text-gray-500">
                       Color: <strong>{item.color}</strong>
@@ -67,7 +67,7 @@ export default function CartPage() {
                     >
                       −
                     </button>
-                    <span className="text-sm font-semibold">{item.qty}</span>
+                    <span className="text-sm font-semi">{item.qty}</span>
                     <button
                       onClick={() => updateQty(item._id, item.qty + 1)}
                       className="px-3 py-1 bg-gray-100 hover:bg-gray-200 rounded text-sm"
@@ -78,7 +78,7 @@ export default function CartPage() {
                 </div>
 
                 <div className="text-right space-y-1">
-                  <p className="text-lg font-bold text-gray-900">
+                  <p className="text-lg font- text-gray-900">
                     ₹{(item.price * item.qty).toFixed(2)}
                   </p>
                   <button
@@ -102,7 +102,7 @@ export default function CartPage() {
               <span className="text-gray-600">GST (18%)</span>
               <span className="font-medium text-gray-800">₹{gst.toFixed(2)}</span>
             </div>
-            <div className="flex justify-between text-lg font-bold text-gray-900 border-t pt-2">
+            <div className="flex justify-between text-lg font- text-gray-900 border-t pt-2">
               <span>Total</span>
               <span>₹{total.toFixed(2)}</span>
             </div>
@@ -112,7 +112,7 @@ export default function CartPage() {
           <div className="sticky bottom-4 z-10">
             <button
               onClick={() => router.push('/checkout')}
-              className="w-full bg-pink-600 text-white font-semibold py-3 rounded-xl shadow-lg hover:bg-pink-700 transition"
+              className="w-full bg-pink-600 text-white font-semi py-3 rounded-xl shadow-lg hover:bg-pink-700 transition"
             >
               Proceed to Checkout
             </button>

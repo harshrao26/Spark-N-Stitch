@@ -9,7 +9,7 @@ const PromoSection = () => {
         
         {/* Left Text Block */}
         <div className="text-center md:text-left">
-          <h2 className="text-4xl font-bold mb-4">Shop Now For<br />Exclusive Styles!</h2>
+          <h2 className="text-4xl font- mb-4">Shop Now For<br />Exclusive Styles!</h2>
           <p className="text-gray-600 mb-6">
             Browse our latest collection of chic, high-quality fashion pieces.<br />
             Shop today and enjoy fast, free shipping!

@@ -28,7 +28,7 @@ export default function UspStrip() {
           className="flex flex-col items-center text-center transition hover:scale-105"
         >
           <div className="mb-3">{item.icon}</div>
-          <h3 className="text-base font-semibold text-gray-800">{item.title}</h3>
+          <h3 className="text-base font-  text-gray-800">{item.title}</h3>
           <p className="text-sm text-gray-500">{item.desc}</p>
         </div>
       ))}

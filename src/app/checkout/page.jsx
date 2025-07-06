@@ -113,7 +113,7 @@ export default function CheckoutPage() {
 
   return (
     <div className="p-6 max-w-2xl mx-auto space-y-6">
-      <h2 className="text-2xl font-bold">Shipping & Payment</h2>
+      <h2 className="text-2xl font-">Shipping & Payment</h2>
 
       <div className="space-y-2">
         <input placeholder="Name" className="border w-full p-2" value={address.name} onChange={e => setAddress({ ...address, name: e.target.value })} />
@@ -130,7 +130,7 @@ export default function CheckoutPage() {
             <span>₹{item.qty * item.price}</span>
           </p>
         ))}
-        <p className="flex justify-between font-bold mt-2 text-lg">
+        <p className="flex justify-between font- mt-2 text-lg">
           Total <span>₹{total}</span>
         </p>
       </div>

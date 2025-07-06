@@ -28,7 +28,7 @@ export default function AdminOrdersPage({ orders = [] }) {
 
   return (
     <div className="p-6 max-w-6xl mx-auto space-y-6">
-      <h2 className="text-2xl font-bold mb-4">All Orders</h2>
+      <h2 className="text-2xl font- mb-4">All Orders</h2>
 
       {localOrders.map((order) => (
         <div
@@ -77,7 +77,7 @@ export default function AdminOrdersPage({ orders = [] }) {
                   <p className="text-gray-500">
                     Qty: {item.quantity} × ₹{item.price}
                   </p>
-                  <p className="font-semibold">
+                  <p className="font-semi">
                     ₹{item.price * item.quantity}
                   </p>
                 </div>
@@ -86,7 +86,7 @@ export default function AdminOrdersPage({ orders = [] }) {
           </div>
 
           {/* Order Total */}
-          <div className="text-right font-semibold text-gray-800 text-base">
+          <div className="text-right font-semi text-gray-800 text-base">
             Total: ₹{order.total}
           </div>
         </div>

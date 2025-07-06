@@ -14,7 +14,7 @@ import Image from "next/image";
 
 const Section = ({ icon: Icon, title, children }) => (
   <div className="mb-10">
-    <h2 className="flex items-center gap-3 text-xl font-semibold text-gray-800 mb-2">
+    <h2 className="flex items-center gap-3 text-xl font- text-gray-800 mb-2">
       <Icon className="text-pink-600" />
       {title}
     </h2>
@@ -29,7 +29,7 @@ const RefundPolicy = () => {
       <div className="relative w-full h-48 md:h-64 overflow-hidden rounded-xl mb-10 shadow">
         <Image src={banner} alt="Refund Policy Banner" className="w-full h-full object-cover" />
         <div className="absolute inset-0 bg-black/30 flex flex-col items-center justify-center text-white text-center px-4">
-          <h1 className="text-3xl md:text-4xl font-bold mb-2">Refund & Cancellation Policy</h1>
+          <h1 className="text-3xl md:text-4xl font- mb-2">Refund & Cancellation Policy</h1>
           <p className="text-sm md:text-base max-w-2xl">
             Know your rights when it comes to refunds, replacements, and order cancellations at Spark n Stitch.
           </p>
@@ -45,7 +45,7 @@ const RefundPolicy = () => {
             <li>An unboxing video that begins before opening the parcel</li>
             <li>Clear photos of the packaging and product at time of delivery</li>
           </ul>
-          <p className="mt-3 font-semibold">Note:</p>
+          <p className="mt-3 font-">Note:</p>
           <ul className="list-disc ml-6 space-y-1">
             <li>No returns or replacements without video/photo proof</li>
             <li>Returned items must be unused and in original packaging</li>

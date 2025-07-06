@@ -19,7 +19,7 @@ export default function OrdersTable() {
 
   return (
     <div className="space-y-4">
-      <h2 className="text-xl mt-6 mb-2 font-semibold">Orders</h2>
+      <h2 className="text-xl mt-6 mb-2 font- ">Orders</h2>
       <table className="w-full border">
         <thead>
           <tr><th>Email</th><th>Total</th><th>Status</th></tr>

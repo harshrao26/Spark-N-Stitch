@@ -108,7 +108,7 @@ export default function AdminOrdersClient({ orders }) {
               <FaTimes />
             </button>
 
-            <h2 className="text-xl font-bold mb-2">Order Details</h2>
+            <h2 className="text-xl font-  mb-2">Order Details</h2>
             <p className="text-sm text-gray-700 mb-1">
               <strong>User:</strong> {selectedOrder.userEmail}
             </p>
@@ -118,7 +118,7 @@ export default function AdminOrdersClient({ orders }) {
 
             {/* Status Update */}
             <div className="mt-3">
-              <label className="block text-sm font-semibold mb-1">Update Status:</label>
+              <label className="block text-sm font- mb-1">Update Status:</label>
               <select
                 value={selectedOrder.status}
                 onChange={(e) => updateStatus(selectedOrder._id, e.target.value)}
@@ -134,7 +134,7 @@ export default function AdminOrdersClient({ orders }) {
 
             {/* Order Items */}
             <div className="mt-4">
-              <h3 className="font-semibold mb-2">Items:</h3>
+              <h3 className="font- mb-2">Items:</h3>
               <ul className="space-y-2">
                 {selectedOrder.items.map((item, index) => (
                   <li
@@ -165,7 +165,7 @@ export default function AdminOrdersClient({ orders }) {
 
             {/* Shipping */}
             <div className="mt-4">
-              <h3 className="font-semibold mb-1">Shipping Address:</h3>
+              <h3 className="font- mb-1">Shipping Address:</h3>
               <p className="text-sm text-gray-600">
                 {selectedOrder.address.name}, {selectedOrder.address.line1},<br />
                 {selectedOrder.address.city} - {selectedOrder.address.pincode}

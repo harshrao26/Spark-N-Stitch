@@ -169,7 +169,7 @@ const handleSubmit = async () => {
         onChange={(e) => setForm({ ...form, name: e.target.value })}
       />
 
-      <label className="block text-sm font-semibold">Description</label>
+      <label className="block text-sm font-">Description</label>
       <RichTextEditor
         value={form.description}
         onChange={(value) => setForm({ ...form, description: value })}

@@ -13,7 +13,7 @@ export default async function DashboardPage() {
         <p className="text-lg font-medium">Please login to view your orders.</p>
         <Link
           href="/login"
-          className="inline-block px-5 py-2 rounded bg-pink-500 text-white font-semibold hover:bg-pink-700 transition"
+          className="inline-block px-5 py-2 rounded bg-pink-500 text-white font-semi hover:bg-pink-700 transition"
         >
           Login
         </Link>
@@ -43,11 +43,11 @@ export default async function DashboardPage() {
 
   return (
     <div className="p-6 max-w-4xl mx-auto space-y-6">
-      <h2 className="text-2xl font-bold">My Orders</h2>
+      <h2 className="text-2xl font-">My Orders</h2>
 
       {/* Current Orders */}
       <div>
-        <h3 className="font-semibold mb-2">Current Orders</h3>
+        <h3 className="font-semi mb-2">Current Orders</h3>
         {current.length === 0 ? (
           <p className="text-sm text-gray-500">No current orders.</p>
         ) : (
@@ -57,7 +57,7 @@ export default async function DashboardPage() {
 
       {/* Past Orders */}
       <div>
-        <h3 className="font-semibold mb-2 mt-6">Past Orders</h3>
+        <h3 className="font-semi mb-2 mt-6">Past Orders</h3>
         {past.length === 0 ? (
           <p className="text-sm text-gray-500">No past orders.</p>
         ) : (
@@ -91,7 +91,7 @@ function OrderCard({ order }) {
         </span>
         <span>
           Status:{" "}
-          <span className="capitalize font-semibold text-pink-600">
+          <span className="capitalize font-semi text-pink-600">
             {order.status}
           </span>
         </span>
@@ -122,7 +122,7 @@ function OrderCard({ order }) {
         ))}
       </ul>
 
-      <div className="text-right text-base font-bold">
+      <div className="text-right text-base font-">
         Total: ₹{order.total}
       </div>
     </div>

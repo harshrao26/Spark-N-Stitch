@@ -42,7 +42,7 @@ const FeatureHighlights = () => (
         <div key={index} className="flex items-start gap-3 w-52">
           <div className="text-pink-500 mt-1">{feature.icon}</div>
           <div>
-            <h4 className="font-semibold text-gray-800 text-sm">{feature.title}</h4>
+            <h4 className="font- text-gray-800 text-sm">{feature.title}</h4>
             <p className="text-xs text-gray-500">{feature.desc}</p>
           </div>
         </div>

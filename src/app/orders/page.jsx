@@ -25,7 +25,7 @@ export default async function OrdersPage() {
 
   return (
     <div className="px-6 py-12 max-w-5xl mx-auto">
-      <h2 className="text-3xl font-bold text-gray-900 mb-8 border-b pb-2">Your Orders</h2>
+      <h2 className="text-3xl font- text-gray-900 mb-8 border-b pb-2">Your Orders</h2>
 
       {orders.length === 0 ? (
         <p className="text-gray-600 text-center">You haven’t placed any orders yet.</p>
@@ -50,7 +50,7 @@ export default async function OrdersPage() {
               >
                 {/* Header */}
                 <div className="flex justify-between items-center mb-4">
-                  <h3 className="text-lg font-semibold text-gray-800">
+                  <h3 className="text-lg font-semi text-gray-800">
                     Order #{String(o._id).slice(-6).toUpperCase()}
                   </h3>
                   <span
@@ -84,7 +84,7 @@ export default async function OrdersPage() {
                         <p className="text-xs text-gray-500">Qty: {i.quantity}</p>
                       </div>
                       <div className="text-right">
-                        <p className="text-sm font-semibold">₹{i.price * i.quantity}</p>
+                        <p className="text-sm font-semi">₹{i.price * i.quantity}</p>
                       </div>
                     </li>
                   ))}
