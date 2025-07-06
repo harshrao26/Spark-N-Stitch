@@ -35,7 +35,7 @@ export default function ProductDetails({ product }) {
   };
 
   return (
-    <div className="p-0 md:p-10 max-w-6xl mx-auto grid md:grid-cols-2 gap-10">
+    <div className="px-4 md:p-10 max-w-6xl mx-auto grid md:grid-cols-2 gap-10">
       {/* Image Gallery */}
       <div className="space-y-4 relative">
         <img
