@@ -31,6 +31,22 @@ export default async function HomePage() {
       <OfferBanner />
       <HeroCarousel />
 
+       <div className="flex gap-4 flex-wrap justify-center md:justify-center mt-6">
+      <Link
+        href="/shop?idealFor=jewellery"
+        className="px-4 py-2 rounded-full border border-gray-300 text-sm text-gray-700 hover:bg-gray-800 hover:text-white transition"
+      >
+        Jewellery
+      </Link>
+
+      <Link
+        href="/shop?idealFor=fashion"
+        className="px-4 py-2 rounded-full border border-gray-300 text-sm text-gray-700 hover:bg-gray-800 hover:text-white transition"
+      >
+        Fashion
+      </Link>
+    </div>
+
       {/* <div className="p-6">
         <h1 className="text-2xl font-bold mb-4">All Products</h1>
 
