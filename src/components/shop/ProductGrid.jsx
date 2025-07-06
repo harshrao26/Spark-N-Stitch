@@ -40,10 +40,10 @@ export default function ProductGrid({ products }) {
             <div className="flex gap-2 mt-2">
               <Link
                 href={`/product/${p._id}`}
-                className="flex-1 flex items-center justify-center gap-1 border border-gray-300 text-gray-700 py-1.5 rounded-md hover:bg-gray-100"
+                className="flex-1 w-full md:px-10 px-5 flex items-center justify-center gap-1 border border-gray-300 text-gray-700 py-1.5 rounded-md hover:bg-gray-100"
               >
                 <FaEye size={14} />
-                <span className="text-xs sm:text-sm">View</span>
+                <span className="text-xs sm:text-sm ">View</span>
               </Link>
 
               <AddToCart product={p} />
