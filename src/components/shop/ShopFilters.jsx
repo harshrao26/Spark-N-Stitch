@@ -31,7 +31,7 @@ export default function ShopFilters({
               <button
                 key={t}
                 onClick={() => setType(t === selectedType ? '' : t)}
-                className={`px-3 py-1.5 rounded-full border text-sm font-medium transition whitespace-nowrap ${
+                className={`px-3 py-1.5 capitalize  rounded-full border text-sm font-medium transition whitespace-nowrap ${
                   selectedType === t
                     ? 'bg-gray-900 text-white border-gray-900'
                     : 'bg-gray-100 text-gray-700 border-gray-200 hover:bg-gray-200'
@@ -59,7 +59,7 @@ export default function ShopFilters({
               <button
                 key={b}
                 onClick={() => setBrand(b === selectedBrand ? '' : b)}
-                className={`px-3 py-1.5 rounded-full border text-sm font-medium transition whitespace-nowrap ${
+                className={`px-3 py-1.5 capitalize  rounded-full border text-sm font-medium transition whitespace-nowrap ${
                   selectedBrand === b
                     ? 'bg-gray-900 text-white border-gray-900'
                     : 'bg-gray-100 text-gray-700 border-gray-200 hover:bg-gray-200'

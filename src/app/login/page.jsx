@@ -12,7 +12,7 @@ export default function GoogleLoginPage() {
         </div>
 
         <button
-          onClick={() => signIn('google')}
+          onClick={() => signIn('google', { callbackUrl: '/' })}
           className="w-full flex items-center justify-center gap-3 px-4 py-3 rounded-md border border-gray-300 bg-white text-gray-700 font-semibold text-sm shadow-sm hover:shadow-md hover:bg-gray-100 transition"
         >
           <FaGoogle className="text-red-500 text-lg" />

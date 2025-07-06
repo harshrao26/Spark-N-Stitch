@@ -8,6 +8,7 @@ export default function AdminOrdersClient({ orders }) {
   const [selectedOrder, setSelectedOrder] = useState(null);
 
   const statusOptions = ['pending', 'paid', 'shipped', 'delivered'];
+  console.log(localOrders);
 
   const statusColor = {
     pending: 'bg-yellow-100 text-yellow-800',
@@ -84,7 +85,10 @@ export default function AdminOrdersClient({ orders }) {
                 </span>
               </td>
               <td className="p-3">
-                <button onClick={() => setSelectedOrder(order)} className="text-blue-600">
+                <button
+                  onClick={() => setSelectedOrder(order)}
+                  className="text-blue-600 hover:text-blue-800"
+                >
                   <FaEye />
                 </button>
               </td>
@@ -93,7 +97,7 @@ export default function AdminOrdersClient({ orders }) {
         </tbody>
       </table>
 
-      {/* Modal */}
+      {/* Order Modal */}
       {selectedOrder && (
         <div className="fixed inset-0 bg-black/40 z-50 flex items-center justify-center">
           <div className="bg-white rounded-lg shadow-lg max-w-md w-full p-6 relative overflow-y-auto max-h-[90vh]">
@@ -128,12 +132,15 @@ export default function AdminOrdersClient({ orders }) {
               </select>
             </div>
 
-            {/* Items */}
+            {/* Order Items */}
             <div className="mt-4">
               <h3 className="font-semibold mb-2">Items:</h3>
               <ul className="space-y-2">
                 {selectedOrder.items.map((item, index) => (
-                  <li key={index} className="flex items-center gap-3 border-b pb-2">
+                  <li
+                    key={index}
+                    className="flex items-center gap-3 border-b pb-2 last:border-none"
+                  >
                     <img
                       src={item.image || '/placeholder.png'}
                       alt={item.name}
@@ -141,7 +148,15 @@ export default function AdminOrdersClient({ orders }) {
                     />
                     <div className="text-sm text-gray-700">
                       <p>{item.name}</p>
-                      <p className="text-xs">Qty: {item.quantity} × ₹{item.price}</p>
+                      <p className="text-xs">
+                        Qty: {item.quantity} × ₹{item.price}
+                      </p>
+                      {(item.selectedSize || item.color) && (
+                        <p className="text-xs text-gray-500">
+                          {item.selectedSize && `Size: ${item.selectedSize}`}
+                          {item.color && ` | Color: ${item.color}`}
+                        </p>
+                      )}
                     </div>
                   </li>
                 ))}
@@ -153,7 +168,8 @@ export default function AdminOrdersClient({ orders }) {
               <h3 className="font-semibold mb-1">Shipping Address:</h3>
               <p className="text-sm text-gray-600">
                 {selectedOrder.address.name}, {selectedOrder.address.line1},<br />
-                {selectedOrder.address.city} - {selectedOrder.address.pincode}<br />
+                {selectedOrder.address.city} - {selectedOrder.address.pincode}
+                <br />
                 📞 {selectedOrder.address.phone}
               </p>
             </div>

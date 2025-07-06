@@ -7,6 +7,7 @@ import PromoSection from "@/components/PromoSection";
 import FeatureHighlights from "@/components/FeatureHighlights";
 import FaqSection from "@/components/FaqSection";
 import AffiliateSection from "@/components/AffiliateSection";
+import ProductSectionPage from "@/components/ProductSectionPage";
 import { OfferBanner } from "@/components/OfferBanner";
 import ProductCard from "@/components/ProductCard";
 import Product from "@/models/Product";
@@ -30,7 +31,7 @@ export default async function HomePage() {
       <OfferBanner />
       <HeroCarousel />
 
-      <div className="p-6">
+      {/* <div className="p-6">
         <h1 className="text-2xl font-bold mb-4">All Products</h1>
 
         <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6">
@@ -49,7 +50,9 @@ export default async function HomePage() {
             </Link>
           </div>
         )}
-      </div>
+      </div> */}
+
+      <ProductSectionPage products={safeProducts} />
 
       <UspStrip />
       <AffiliateSection />

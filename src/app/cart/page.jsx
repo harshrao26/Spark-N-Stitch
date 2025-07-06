@@ -1,31 +1,28 @@
-'use client'
+'use client';
 
-import { useCartStore } from '@/lib/cartStore'
-import { useRouter } from 'next/navigation'
+import { useCartStore } from '@/lib/cartStore';
+import { useRouter } from 'next/navigation';
 
 export default function CartPage() {
-  const { items, remove, updateQty } = useCartStore()
-  const router = useRouter()
+  const { items, remove, updateQty, updateSize } = useCartStore();
+  const router = useRouter();
 
-  const subtotal = items.reduce((sum, p) => sum + (Number(p.price) || 0) * p.qty, 0)
-  const gst = subtotal * 0.18
-  const total = subtotal + gst
+  const subtotal = items.reduce((sum, p) => sum + (Number(p.price) || 0) * p.qty, 0);
+  const gst = subtotal * 0.18;
+  const total = subtotal + gst;
 
   return (
     <div className="p-4 sm:p-6 max-w-3xl mx-auto space-y-6">
       <h2 className="text-2xl font-bold text-gray-800">🛒 Your Cart</h2>
 
       {items.length === 0 ? (
-        <div className="text-center py-20 text-gray-500 text-sm">
-          Your cart is empty.
-        </div>
+        <div className="text-center py-20 text-gray-500 text-sm">Your cart is empty.</div>
       ) : (
         <>
-          {/* Cart Items */}
           <div className="space-y-6">
             {items.map((item) => (
               <div
-                key={item._id}
+                key={item._id + item.selectedSize}
                 className="bg-white rounded-xl shadow-sm p-4 flex gap-4 border items-start"
               >
                 <img
@@ -33,23 +30,47 @@ export default function CartPage() {
                   alt={item.name}
                   className="w-24 h-24 object-cover rounded-md border"
                 />
+
                 <div className="flex flex-col justify-between flex-1">
-                  <div>
+                  <div className="space-y-1">
                     <h3 className="text-base font-semibold text-gray-800">{item.name}</h3>
-                     
+
+                    <p className="text-sm text-gray-500">
+                      Color: <strong>{item.color}</strong>
+                    </p>
+
+                    {/* Size Selector */}
+                    {item.sizes?.length > 0 && (
+                      <div className="flex gap-2 flex-wrap mt-1">
+                        {item.sizes.map((size) => (
+                          <button
+                            key={size}
+                            onClick={() => updateSize(item._id, size)}
+                            className={`px-3 py-1 text-sm border rounded ${
+                              item.selectedSize === size
+                                ? 'bg-pink-500 text-white border-pink-500'
+                                : 'text-gray-700 border-gray-300 hover:border-pink-500'
+                            }`}
+                          >
+                            {size}
+                          </button>
+                        ))}
+                      </div>
+                    )}
                   </div>
 
-                  <div className="flex items-center gap-3 mt-2">
+                  {/* Quantity Controls */}
+                  <div className="flex items-center gap-3 mt-3">
                     <button
                       onClick={() => updateQty(item._id, item.qty - 1)}
-                      className="px-2 py-1 bg-gray-200 rounded text-sm"
+                      className="px-3 py-1 bg-gray-100 hover:bg-gray-200 rounded text-sm"
                     >
-                      -
+                      −
                     </button>
-                    <span className="text-sm font-medium">{item.qty}</span>
+                    <span className="text-sm font-semibold">{item.qty}</span>
                     <button
                       onClick={() => updateQty(item._id, item.qty + 1)}
-                      className="px-2 py-1 bg-gray-200 rounded text-sm"
+                      className="px-3 py-1 bg-gray-100 hover:bg-gray-200 rounded text-sm"
                     >
                       +
                     </button>
@@ -99,5 +120,5 @@ export default function CartPage() {
         </>
       )}
     </div>
-  )
+  );
 }

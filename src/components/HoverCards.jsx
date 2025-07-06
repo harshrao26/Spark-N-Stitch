@@ -4,6 +4,7 @@ import Image from 'next/image'
 import img from '@/assets/image.png'
 import img2 from '@/assets/image2.png'
 import img3 from '@/assets/image3.png'
+import Link from 'next/link'
 
 const categories = [
   {
@@ -27,6 +28,7 @@ const HoverCards = () => {
   return (
     <div className="grid md:grid-cols-3  gap-6 px-6 py-12">
       {categories.map((item, idx) => (
+        <Link href="/shop" key={idx} className="group">
         <div
           key={idx}
           className="relative group h-[650px] overflow-hidden rounded-xl shadow-lg cursor-pointer"
@@ -44,10 +46,12 @@ const HoverCards = () => {
           {/* Hover Content */}
           <div className="absolute bottom-0 p-6 w-full transform translate-y-full group-hover:translate-y-0 transition-transform duration-500 text-white">
             <h3 className="text-xl font-semibold">{item.title}</h3>
-            <p className="text-sm mt-2">{item.subtitle}</p>
-            <button className="mt-4 border border-white px-4 py-2 text-sm rounded hover:bg-white hover:text-black transition duration-300">
+            <p className="text-sm mt-2 mb-8">{item.subtitle}</p>
+            <Link
+              href="/shop"
+              className="mt-4 border border-white px-4 py-2 text-sm rounded hover:bg-white hover:text-black transition duration-300">
               Show More
-            </button>
+            </Link>
           </div>
 
           {/* Static title (shown before hover) */}
@@ -55,6 +59,7 @@ const HoverCards = () => {
             {item.title}
           </div>
         </div>
+        </Link>
       ))}
     </div>
   )

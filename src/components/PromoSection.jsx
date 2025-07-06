@@ -1,3 +1,5 @@
+"use client"
+import Link from 'next/link';
 import React from 'react';
 
 const PromoSection = () => {
@@ -12,9 +14,9 @@ const PromoSection = () => {
             Browse our latest collection of chic, high-quality fashion pieces.<br />
             Shop today and enjoy fast, free shipping!
           </p>
-          <button className="bg-white border border-black text-black px-6 py-2 rounded shadow hover:bg-black hover:text-white transition">
+          <Link href="/shop" className="bg-white border border-pink-500 text-pink-600 px-6 py-2 rounded shadow hover:bg-pink-500 hover:text-white transition">
             Learn More
-          </button>
+          </Link>
         </div>
 
         {/* Right Image */}
