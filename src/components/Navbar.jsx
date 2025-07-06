@@ -21,7 +21,7 @@ export default function Navbar() {
         {/* Logo */}
         <Link
           href="/"
-          className="text-2xl flex items-center gap-2 font-bold tracking-tight text-black"
+          className="text-2xl flex items-center gap-2 tracking-tight text-black"
         >
           <Image src={logo} width={50} height={50} alt="Spark&Stitch Logo" />
           <span className="text-pink-500 md:block hidden"> Spark&Stitch</span>
