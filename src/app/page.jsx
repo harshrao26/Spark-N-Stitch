@@ -10,15 +10,16 @@ import AffiliateSection from "@/components/AffiliateSection";
 import ProductSectionPage from "@/components/ProductSectionPage";
 import { OfferBanner } from "@/components/OfferBanner";
 import ProductCard from "@/components/ProductCard";
+import Category from "@/components/Category";
 import Product from "@/models/Product";
 import { connectDB } from "@/lib/mongoose";
-import Link from 'next/link';
+import Link from "next/link";
 
 export default async function HomePage() {
   await connectDB();
 
   const products = await Product.find({}).lean();
-  const safeProducts = products.map(p => ({
+  const safeProducts = products.map((p) => ({
     ...p,
     _id: p._id.toString(),
     createdAt: p.createdAt?.toString(),
@@ -30,22 +31,23 @@ export default async function HomePage() {
     <div>
       <OfferBanner />
       <HeroCarousel />
+      <Category />
 
-       <div className="flex gap-4 flex-wrap justify-center md:justify-center mt-6">
-      <Link
-        href="/shop?idealFor=jewellery"
-        className="px-4 py-2 rounded-full border border-gray-300 text-sm text-gray-700 hover:bg-gray-800 hover:text-white transition"
-      >
-        Jewellery
-      </Link>
+      <div className="flex gap-4 flex-wrap justify-center md:justify-center mt-2">
+        <Link
+          href="/shop?clothType=dress"
+          className="px-4 py-2 rounded-full border border-gray-300 text-sm text-gray-700 hover:bg-gray-800 hover:text-white transition"
+        >
+          Jewellery
+        </Link>
 
-      <Link
-        href="/shop?idealFor=fashion"
-        className="px-4 py-2 rounded-full border border-gray-300 text-sm text-gray-700 hover:bg-gray-800 hover:text-white transition"
-      >
-        Fashion
-      </Link>
-    </div>
+        <Link
+          href="/shop?idealFor=fashion"
+          className="px-4 py-2 rounded-full border border-gray-300 text-sm text-gray-700 hover:bg-gray-800 hover:text-white transition"
+        >
+          Fashion
+        </Link>
+      </div>
 
       {/* <div className="p-6">
         <h1 className="text-2xl font-bold mb-4">All Products</h1>

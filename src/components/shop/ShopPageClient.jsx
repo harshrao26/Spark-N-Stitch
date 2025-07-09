@@ -5,68 +5,78 @@ import ShopCarousel from "./ShopCarousel";
 import ShopFilters from "./ShopFilters";
 import ProductGrid from "./ProductGrid";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 
-
-export default function ShopPageClient({ products, types, brands }) {
+export default function ShopPageClient({ products, clothTypes, brands }) {
   const searchParams = useSearchParams();
-  const initialIdealFor = searchParams.get("idealFor") || "";
+  const router = useRouter();
 
-  const [idealFor, setIdealFor] = useState(initialIdealFor);
-  const [brand, setBrand] = useState("");
+  const idealFor = searchParams.get("idealFor") || "";
+  const clothType = searchParams.get("clothType") || "";
+  const brand = searchParams.get("brand") || "";
 
-  useEffect(() => {
-    setIdealFor(initialIdealFor);
-  }, [initialIdealFor]);
-
-  const filtered = useMemo(() => {
-    return products.filter(
-      (p) =>
-        (!idealFor || p.idealFor?.toLowerCase() === idealFor.toLowerCase()) &&
-        (!brand || p.brand === brand)
-    );
-  }, [products, idealFor, brand]);
+  const updateQuery = (key, value) => {
+    const params = new URLSearchParams(searchParams.toString());
+    if (value) {
+      params.set(key, value.toLowerCase());
+    } else {
+      params.delete(key);
+    }
+    router.push(`/shop?${params.toString()}`);
+  };
 
   return (
     <div className="space-y-8 px-4 md:px-6 xl:px-0">
       {/* Top Carousel */}
       <ShopCarousel />
 
-          <div className="flex gap-4 flex-wrap justify-center md:justify-center my-6">
-      <Link
-        href="/shop?idealFor=jewellery"
-        className="px-4 py-2 rounded-full border border-gray-300 text-sm text-gray-700 hover:bg-gray-800 hover:text-white transition"
-      >
-        Jewellery
-      </Link>
-
-      <Link
-        href="/shop?idealFor=fashion"
-        className="px-4 py-2 rounded-full border border-gray-300 text-sm text-gray-700 hover:bg-gray-800 hover:text-white transition"
-      >
-        Fashion
-      </Link>
-    </div>
-
-
-        <div className=" max-w-7xl mx-auto">
-        <ProductGrid products={filtered} />
+      <div className=" max-w-7xl mx-auto">
+        {/* <ProductGrid products={products} /> */}
       </div>
 
       {/* Filters + Grid */}
-      {/* <div className="grid grid-cols-1 md:grid-cols-1 gap-4 max-w-7xl mx-auto"> */}
-      {/* Left Filters */}
-      {/* <ShopFilters
-          types={types}
-          brands={brands}
-          selectedType={idealFor}
-          selectedBrand={brand}
-          setType={setIdealFor}
-          setBrand={setBrand}
-        /> */}
+      <div className="md:flex max-w-7xl mx-auto  hidden">
+        {/* Left Filters */}
+        <div className=" mr-10 ">
+          {/* IdealFor Filter */}
+          <div className="flex  gap-2 justify -center">
+            {["fashion", "jewellery"].map((cat) => (
+              <button
+                key={cat}
+                onClick={() => updateQuery("idealFor", cat)}
+                className={`px-3 py-1 capitalize rounded ${
+                  idealFor === cat
+                    ? "bg-pink-500 text-white"
+                    : "text-gray-800 border"
+                }`}
+              >
+                {cat}
+              </button>
+            ))}
+          </div>
 
-      {/* Right Product Grid */}
-    
-      {/* </div> */}
+          {/* Cloth Type Filter */}
+          <div className="flex flex-wrap gap-2 mt-4 justify- center">
+            {clothTypes.map((t) => (
+              <button
+                key={t}
+                onClick={() => updateQuery("clothType", t)}
+                className={`px-3 py-1 capitalize rounded ${
+                  clothType === t
+                    ? "bg-pink-500 text-white"
+                    : "text-gray-800 border"
+                }`}
+              >
+                {t}
+              </button>
+            ))}
+          </div>
+        </div>
+
+        {/* Right Product Grid */}
+
+        <ProductGrid products={products} />
+      </div>
     </div>
   );
 }
