@@ -1,4 +1,6 @@
 'use client'
+export const dynamic = "force-dynamic"; // 👈 Add this
+
 import Link from 'next/link'
 import { FaEye } from 'react-icons/fa'
 import AddToCart from '../AddToCart'
