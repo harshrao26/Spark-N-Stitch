@@ -30,20 +30,9 @@ export default function ProductSectionPage({ products = [] }) {
           </p>
         ) : (
           <>
-            <div className="overflow-x-auto md:hidden block lg:overflow-visible">
-              <div className="flex gap-4">
-                {womenProducts.map((product) => (
-                  <div
-                    key={product._id}
-                    className="w-[70vw] sm:w-[40vw] md:w-[30vw] lg:w-auto  "
-                  >
-                    <ProductCard product={product} />
-                  </div>
-                ))}
-              </div>
-            </div>
+             
 
-            <div className="md:grid grid-cols-2 hidden  sm:grid-cols-3 lg:grid-cols-4 gap-4">
+            <div className="grid grid-cols-2    sm:grid-cols-3 lg:grid-cols-4 gap-4">
               {womenProducts.map((product) => (
                 <ProductCard key={product._id} product={product} />
               ))}
@@ -72,20 +61,9 @@ export default function ProductSectionPage({ products = [] }) {
           </p>
         ) : (
           <>
-          <div className="overflow-x-auto md:hidden block lg:overflow-visible">
-              <div className="flex space-x-4 lg:grid lg:grid-cols-4 lg:space-x-0 lg:gap-4 min-w-max">
-                {jewelleryProducts.map((product) => (
-                  <div
-                    key={product._id}
-                    className="w-[70vw] sm:w-[40vw] md:w-[30vw] lg:w-auto flex-shrink-0"
-                  >
-                    <ProductCard product={product} />
-                  </div>
-                ))}
-              </div>
-            </div>
+           
 
-            <div className="md:grid grid-cols-2 hidden  sm:grid-cols-3 lg:grid-cols-4 gap-4">
+            <div className="grid grid-cols-2    sm:grid-cols-3 lg:grid-cols-4 gap-4">
               {jewelleryProducts.map((product) => (
                 <ProductCard key={product._id} product={product} />
               ))}
