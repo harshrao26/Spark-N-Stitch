@@ -11,7 +11,7 @@ export default function ProductGrid({ products }) {
       {products.map((p) => (
         <div
           key={p._id}
-          className="bg-white  rounded-xl border overflow-hidden shadow-sm hover:shadow-md transition text-sm"
+          className="bg-white  rounded-xl border overflow-  shadow-sm hover:shadow-md transition text-sm"
         >
           {/* Product Image */}
           <img

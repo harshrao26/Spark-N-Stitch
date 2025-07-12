@@ -37,7 +37,7 @@ export default function ShopPageClient({ products, clothTypes, brands }) {
       </div>
 
       {/* Filters + Grid */}
-      <div className="md:flex max-w-7xl mx-auto  hidden">
+      <div className="md:flex max-w-7xl mx-auto  ">
         {/* Left Filters */}
         <div className=" mr-10 ">
           {/* IdealFor Filter */}
