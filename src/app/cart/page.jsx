@@ -8,8 +8,7 @@ export default function CartPage() {
   const router = useRouter();
 
   const subtotal = items.reduce((sum, p) => sum + (Number(p.price) || 0) * p.qty, 0);
-  const gst = subtotal * 0.18;
-  const total = subtotal + gst;
+   const total = subtotal ;
 
   return (
     <div className="p-4 sm:p-6 max-w-3xl mx-auto space-y-6">
@@ -98,10 +97,7 @@ export default function CartPage() {
               <span className="text-gray-600">Subtotal</span>
               <span className="font-medium text-gray-800">₹{subtotal.toFixed(2)}</span>
             </div>
-            <div className="flex justify-between">
-              <span className="text-gray-600">GST (18%)</span>
-              <span className="font-medium text-gray-800">₹{gst.toFixed(2)}</span>
-            </div>
+            
             <div className="flex justify-between text-lg font- text-gray-900 border-t pt-2">
               <span>Total</span>
               <span>₹{total.toFixed(2)}</span>
