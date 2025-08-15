@@ -72,6 +72,11 @@ const Footer = () => {
         <div className="text-xs text-gray-500 mt-4">
           © {new Date().getFullYear()} Spark & Stitch. All rights reserved.
         </div>
+
+        {/* Credit */}
+        <div className='text-xs text-gray-500 m t-2 text-center'>
+          Designed & Developed with 🩷 by{" "} <a href="https://genforgestudio.com/" className='text-pink-500 hover:underline hover:scale-120 transition-all duration-300 ease-in-out '>Genforge Studio</a>
+        </div>
       </div>
     </footer>
   )
