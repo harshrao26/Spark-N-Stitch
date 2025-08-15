@@ -10,6 +10,14 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <head>
+          <title>
+          Spark & Stitch – Trendy Fashion for Men, Women & Kids | Shop Co-ords,
+          Dresses & More
+        </title>
+        <meta
+          name="description"
+          content="Discover the latest fashion at Spark & Stitch. Shop stylish co-ord sets, dresses, sarees & more for men, women & kids. Enjoy 20% off your first purchase, free delivery over ₹2000 & easy returns."
+        />
         {/* Updated Meta Pixel Script */}
         <Script id="meta-pixel" strategy="afterInteractive">
           {`

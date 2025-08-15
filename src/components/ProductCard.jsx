@@ -59,18 +59,18 @@ export default function ProductCard({ product }) {
         </div>
 
         {/* Buttons */}
-        <div className="mt-3 w-full flex gap-2">
-          <button
-            onClick={viewProduct}
-            className="flex-1 flex items-center justify-center gap-2 text-sm bg-gray-100 hover:bg-gray-200 text-gray-800 py-2 rounded-md transition"
-          >
-            <FaEye size={14} /> View
-          </button>
+       <div className="mt-3 w-full flex flex-col sm:flex-row gap-2">
+  <button
+    onClick={viewProduct}
+    className="w-full sm:flex-1 flex items-center justify-center gap-2 text-sm bg-gray-100 hover:bg-gray-200 text-gray-800 py-2 rounded-md transition"
+  >
+    <FaEye size={14} /> View
+  </button>
 
-          <div className="flex-1">
-            <AddToCart product={product} />
-          </div>
-        </div>
+  <div className="w-full sm:flex-1">
+    <AddToCart product={product} />
+  </div>
+</div>
       </div>
     </div>
   )

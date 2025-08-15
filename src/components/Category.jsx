@@ -50,27 +50,48 @@ export default function CategoryFilter() {
   };
 
   return (
-    <div className="mt-4 max-w-7xl mx-auto">
-      <div className="flex ">
-        {subCategories.map((sub) => (
-          <div
-  key={sub.name}
-  role="button"
-  tabIndex={0}
-  onClick={() => handleFilterChange("Fashion", sub.name)}
-  onKeyDown={(e) => e.key === "Enter" && handleFilterChange("Fashion", sub.name)}
-  className="w-32 h-40 cursor-pointer flex flex-col items-center justify-center rounded hover:shadow-md transition"
->
-  <img
-    src={sub.image}
-    alt={sub.name}
-    className="h-24 object-cover rounded"
-  />
-  <p className="mt-2 text-center text-sm font-medium">{sub.name}</p>
-</div>
+<div className="mt-4 max-w-7xl mx-auto px-4">
+  <div
+    className="
+      grid grid-flow-col auto-cols-[8rem] gap-3 overflow-x-auto snap-x snap-mandatory
+      md:grid-flow-row md:auto-cols-auto md:grid-cols-3 lg:grid-cols-5 xl:grid-cols-6 md:gap-4 md:overflow-visible
+      [-webkit-overflow-scrolling:touch]
+    "
+  >
+    {subCategories.map((sub) => (
+      <button
+        key={sub.name}
+        type="button"
+        onClick={() => handleFilterChange('Fashion', sub.name)}
+        aria-label={`Filter by ${sub.name}`}
+        className="
+          snap-start group relative bg-white border rounded-xl p-2
+          w-[8rem] h-[9.5rem] flex flex-col items-center justify-between
+          shadow-sm hover:shadow-md transition
+          focus:outline-none focus-visible:ring-2 focus-visible:ring-pink-500/70
+          md:w-auto md:h-auto md:p-3
+        "
+      >
+        <div className="relative w-full aspect-square rounded-lg overflow-hidden bg-gray-50">
+          <img
+            src={sub.image}
+            alt={sub.name}
+            className="w-full h-full object-cover transition-transform duration-200 group-hover:scale-[1.03]"
+            loading="lazy"
+          />
+          {/* Optional soft gradient overlay for legibility on busy images */}
+          <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-transparent to-black/0 md:hidden" />
+        </div>
 
-        ))}
-      </div>
-    </div>
+        <p className="mt-2 text-center text-xs md:text-sm font-medium text-gray-800 line-clamp-2">
+          {sub.name}
+        </p>
+
+        {/* Nice hover outline on desktop */}
+        <span className="pointer-events-none absolute inset-0 rounded-xl ring-0 group-hover:ring-1 ring-pink-500/30 hidden md:block" />
+      </button>
+    ))}
+  </div>
+</div>
   );
 }
